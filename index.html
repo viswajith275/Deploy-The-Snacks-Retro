@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Deploy the Snacks - Addictive Stacking Game</title>
+    <link rel="stylesheet" href="public\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Main Menu -->
+        <div id="mainMenu" class="menu-screen active">
+            <div class="menu-content">
+                <h1 class="game-title">🍔 Deploy the Snacks 🍔</h1>
+                <p class="game-subtitle">Scare the crows,Get highscores</p>
+                <div class="menu-buttons">
+                    <button id="playBtn" class="btn btn-primary">▶️ Play</button>
+                    <button id="howToPlayBtn" class="btn btn-secondary">❓ How to Play</button>
+                    <div class="high-score-display">
+                        <span>🏆 High Score: <span id="highScoreDisplay">0</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Play Menu -->
+        <div id="howToPlayMenu" class="menu-screen">
+            <div class="menu-content">
+                <h2>How to Play</h2>
+                <div class="instructions">
+                    <p>📱 <strong>Tap/Click</strong> to drop food from the moving line</p>
+                    <p>🎯 <strong>Win</strong> score the highest score you can!</p>
+                    <p>❤️ Start with <strong>3 health points</strong> - lose one if food falls</p>
+                    <p>🐦 <strong>Tap crows</strong> to scare them away and earn health (max 3) else lose 1 health</p>
+                    <p>⚡ <strong>Rapid Fire power-up</strong> lets you spam click for 5 seconds</p>
+                </div>
+                <button id="backFromHowToPlay" class="btn btn-secondary">⬅️ Back</button>
+            </div>
+        </div>
+
+        <!-- Pause Menu -->
+        <div id="pauseMenu" class="menu-screen">
+            <div class="menu-content">
+                <h2>Game Paused</h2><br>
+                <div class="menu-buttons">
+                    <button id="resumeBtn" class="btn btn-primary">▶️ Resume</button><br>
+                    <button id="restartBtn" class="btn btn-secondary">🔄 Restart</button><br>
+                    <button id="howToPlayFromPause" class="btn btn-secondary">❓ How to Play</button><br>
+                    <button id="quitBtn" class="btn btn-secondary">🏠 Main Menu</button><br>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Menu -->
+        <div id="gameOverMenu" class="menu-screen">
+            <div class="menu-content">
+                <h2 id="gameOverTitle">Game Over</h2>
+                <div class="game-stats">
+                    <p>📊 <strong>Score:</strong> <span id="finalScore">0</span></p>
+                    <p>🏆 <strong>High Score:</strong> <span id="finalHighScore">0</span></p>
+                    <p>💔 <strong>Health Lost:</strong> <span id="healthLost">0</span></p>
+                    <p id="newHighScoreMsg" class="new-high-score hidden">🎉 New High Score! 🎉</p>
+                </div>
+                <div class="menu-buttons">
+                    <button id="playAgainBtn" class="btn btn-primary">🔄 Play Again</button>
+                    <button id="backToMenuBtn" class="btn btn-secondary">🏠 Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Game UI Overlay -->
+        <div id="gameUI" class="game-ui hidden">
+            <div class="ui-top">
+                <div class="score-display">
+                    <span>Score: <span id="currentScore">0</span></span>
+                </div>
+                <div class="health-display">
+                    <span id="healthHearts">❤️❤️❤️</span>
+                </div>
+                <button id="pauseBtn" class="pause-btn">⏸️</button>
+            </div>
+            <div class="ui-bottom">
+                <div id="powerUpIndicator" class="power-up-indicator hidden">
+                    <span>⚡ RAPID FIRE MODE!</span>
+                    <div class="power-up-timer"></div>
+                </div>
+                <div id="crowAlert" class="crow-alert hidden">
+                    <span>TAP THE CROW!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="backgroundMusic" loop>
+        <source src="public/sounds/background.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="dropSound">
+        <source src="public/sounds/hit.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="successSound">
+        <source src="public/sounds/success.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="crowSound">
+        <source src="public/sounds/hit.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="public\script.js"></script>
+</body>
+</html>
